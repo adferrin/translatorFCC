@@ -22,6 +22,22 @@ class Translator {
 
         return translated;
     }
+    toAmericanEnglish(text) {
+        const dict = {...britishOnly, ...reverseDict(americanToBritishSpelling) };
+        const titles = reverseDict(americanToBritishTitles);
+        const timeRegex = /([1-9]|1[012]).[0-5][0-9]/g;
+        const translated = this.translate(
+            text,
+            dict,
+            titles,
+            timeRegex,
+            "toAmerican"
+        );
+        if (!translated) {
+            return text;
+        }
+        return translated;
+    }
 }
 
 module.exports = Translator;
