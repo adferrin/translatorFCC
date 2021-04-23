@@ -3,6 +3,13 @@ const americanToBritishSpelling = require('./american-to-british-spelling.js');
 const americanToBritishTitles = require("./american-to-british-titles.js")
 const britishOnly = require('./british-only.js')
 
+const reverseDict = (obj) => {
+    return Object.assign(
+        {},
+        ...Object.entries(obj).map(([k, v]) => ({ [v]: k }))
+    );
+};
+
 class Translator {
 
     toBritishEnglish(text) {
